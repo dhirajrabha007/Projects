@@ -1,0 +1,47 @@
+#Simple  Rock,Paper and Scissor Game Using Python.
+
+import random
+
+def UserChoice():
+    user_choice = input("Choose Any of Rock, Paper, Scissors): ").capitalize()
+    while user_choice not in ['Rock', 'Paper', 'Scissors']:
+        print("Invalid Input")
+        user_choice = input("Choose Any of Rock, Paper, Scissors): ").capitalize()
+    return user_choice
+
+def ComputerChoice():
+    return random.choice(['Rock', 'Paper', 'Scissors'])// Computer will Throw Random
+
+def Winner(user_choice, computer_choice):
+    print(f"You chose {user_choice}.")
+    print(f"The computer chose {computer_choice}.")
+
+    if user_choice == computer_choice:
+        return "It's a tie!"
+    elif (
+        (user_choice == 'Rock' and computer_choice == 'Scissors') or
+        (user_choice == 'Paper' and computer_choice == 'Rock') or
+        (user_choice == 'Scissors' and computer_choice == 'Paper')
+    ):
+        return "You win!"
+    else:
+        return "You lose!"
+
+def main():
+    print("Welcome to Rock, Paper, Scissors!")
+
+    while True:
+        user_choice =UserChoice ()
+        computer_choice = ComputerChoice()
+
+        result = Winner(user_choice, computer_choice)
+        print(result)
+
+        play_again = input("Do you want to play again?-- Choose yes/no: ").lower()
+        if play_again != 'yes':
+            break
+
+    print("Thanks for playing!")
+
+if __name__ == "__main__":
+    main()
